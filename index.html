@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find University</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <header>
+            <nav>
+                <h1 class="logo">
+                    Find University
+                </h1>
+                <ul class="nav__items">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./projects.html">Projects</a></li>
+                    <li><a href="./upcoming.html">Upcoming</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="hero">
+            <div class="searchbar">
+                <input id="search" type="text" placeholder="Find a University by country" /> <input type="submit"
+                    value="Search" onclick="loadUni()" />
+            </div>
+            <div class="content" id="content">
+
+            </div>
+        </div>
+
+        <footer>
+            <small>&copy; Tara</small>
+        </footer>
+    </main>
+    <script>
+        let universities = [];
+        let input_content = document.getElementById("search");
+        let content = document.getElementById("content");
+        function createDiv(item) {
+            const div = document.createElement("div");
+            const h3 = document.createElement("h5");
+            const a = document.createElement("a");
+            const p = document.createElement("p");
+            h3.innerText = item.name;
+            a.href = item.web_pages;
+            a.innerText = item.web_pages[0];
+            a.target = "_blank";
+            p.innerText = item.country;
+            div.appendChild(h3);
+            div.appendChild(a);
+            div.appendChild(p);
+            content.appendChild(div)
+        }
+        function clearChild(parent) {
+            while (parent.firstChild) {
+                parent.removeChild(parent.firstChild)
+            }
+        }
+        function loadUni(country) {
+            clearChild(content)
+            country = input_content.value;
+            fetch(`http://universities.hipolabs.com/search?country=${country}`)
+                .then(response => response.json())
+                .then(data => data.map(item => {
+
+                    universities = data;
+                    createDiv(item)
+                }));
+        }
+        loadUni("Switzerland");
+    </script>
+</body>
+
+</html>

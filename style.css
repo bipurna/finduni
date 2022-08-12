@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;500;700&family=Sora:wght@100;200;300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --text-color:#13aac5;
+    --background:blanchedalmond;
+    --hover-color:#c7b190;
+}
+
+body{
+ font-family: 'Sora', sans-serif;
+ 
+
+}
+main{
+    display: flex;
+ flex-direction: column;
+ height: 100vh;
+}
+nav{
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+nav .logo{
+    color: var(--text-color);
+    text-transform: uppercase;
+}
+.nav__items{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.nav__items li{
+    list-style: none;
+    padding: 20px;
+
+}
+.nav__items li:hover{
+    background-color:var(--hover-color);
+    color: #ffebcd;
+    transition: ease-out 2s ;
+    cursor: pointer;
+}
+.nav__items a{
+    text-decoration: none;
+    color: var(--text-color);
+    text-transform: uppercase;
+    
+}
+.hero{
+    flex: 1;
+    flex-grow: calc(nav-100vh);
+}
+.searchbar{
+    display: flex;
+    padding: 20px 0;
+}
+.searchbar input:last-child{
+    padding: 10px;
+    color: var(--text-color);
+    text-transform: uppercase;
+}
+.searchbar input{
+    height: 40px;
+    margin: 30px;
+}
+#search{
+   flex: 1;
+   margin: 30px;
+   padding: 10px;
+}
+#search:focus{
+    outline: none;
+}
+.content{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    padding: 30px;
+    width: 100%;
+    gap: 30px;
+    
+    
+}
+.content div{
+    border: 1px solid var(--background);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    box-shadow: #13aac5;
+    border-radius: 6px;
+    -webkit-box-shadow: 5px 3px 4px -1px #13aac566; 
+    box-shadow: 5px 3px 4px -1px #13aac566;
+
+}
+.content  img{
+    max-width: 100%;
+}
+.content div h5,a,p{
+    padding:0 0 10px 0;
+
+}
+.projects{
+    display: flex;
+    flex-direction: column;
+}
+.projects div:last-child{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.upcoming{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+.content h1{
+    padding: 0 0 30px 0;
+    color: var(--text-color);
+}
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background);
+    padding:10px;
+}
+@media screen and (max-width: 650px) {
+    nav{
+        display: flex;
+        flex-direction: column;
+    }
+    .content{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 30px;
+    }
+    .content div{
+        width: 100%;
+    }
+    .projects div:last-child{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}
